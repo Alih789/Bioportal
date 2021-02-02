@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -28,7 +20,21 @@ import PureChart from 'react-native-pure-chart';
 
 const App: () => React$Node = () => {
 
-  let sampleData = [30, 200, 170, 250, 10]
+  let sampleData = [
+    {
+    seriesName: "test",
+    data:[
+    {x: '1', y: 40},
+    {x: '2', y: 200},
+    {x: '3', y: 72},
+    {x: '4', y: 25},
+    {x: '5', y: 80}
+    ],
+    color: "blue"
+  }
+  ]
+
+
   let sampleDataMulti= [
         {seriesName: 'test', data: [30, 200, 170, 250, 99], color: '#ff4b00'},
         {seriesName: 'test2', data: [60, 400, 570, 250, 78], color: '#0e95de'},
@@ -52,7 +58,7 @@ const App: () => React$Node = () => {
 
   ]
 
-  let sampleDataBar = [{ seriesName: 'test2', data: [140, 160,135,185], color: "#0e95de", },]
+
   
   return (
     <>
@@ -62,21 +68,21 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
 
-          <View style = {{flex: 2, backgroundColor: "red"}}>
+          <View style = {{flex: 2,borderWidth: 5}}>
             <Text style = {{fontSize: 24, textAlign: 'center'}}>Demo App</Text>
           </View>
 
           <View style={{ flex : 1, borderWidth:2, borderColor:"black", padding: 20, }}> 
-            <Text style = {{textAlign: "center", paddingBottom: 20}}>This is a Clickable line Chart: </Text>
+            <Text style = {{textAlign: "center", paddingBottom: 20, fontWeight: "bold"}}>This is a Clickable line Chart: </Text>
             <PureChart type={'line'}
               data={sampleData}
               width={'100%'}
               height={100}
-
+              showEvenNumberXaxisLabel = {false}
               />
           </View>
           <View style={{ flex : 1, borderWidth:2, borderColor:"black", padding: 20, }}> 
-            <Text style = {{textAlign: "center", paddingBottom: 20}}>This is a Clickable Multi-line Chart: </Text>
+            <Text style = {{textAlign: "center", paddingBottom: 20, fontWeight: "bold"}}>This is a Clickable Multi-line Chart: </Text>
             <PureChart type={'line'}
               data={sampleDataMulti}
               width={'100%'}
@@ -84,25 +90,22 @@ const App: () => React$Node = () => {
               />
           </View>
           <View style={{ flex : 1, borderWidth:2, borderColor:"black", padding: 20, justifyContent: "center"}}> 
-            <Text style = {{textAlign: "center", paddingBottom: 20}}>This is a Clickable Pie Chart: </Text>
+            <Text style = {{textAlign: "center", paddingBottom: 20, fontWeight: "bold"}}>This is a Clickable Pie Chart: </Text>
             <PureChart type={'pie'}
               data={sampleDataPi}
               width={'100%'}
               height={100}
-              showEvenNumberXaxisLabel={true}
               />
           </View>
           <View style={{ flex : 1, borderWidth:2, borderColor:"black", padding: 20, justifyContent: "center"}}> 
-            <Text style = {{textAlign: "center", paddingBottom: 20}}>This is a Clickable Bar Chart: </Text>
+            <Text style = {{textAlign: "center", paddingBottom: 20, fontWeight: "bold"}}>This is a Clickable Bar Chart: </Text>
             <PureChart type={'bar'}
-              data={sampleDataBar}
+              data={sampleData}
               width={'100%'}
               height={100}
-
+              showEvenNumberXaxisLabel = {false}
               />
           </View>
-
-          
         </ScrollView>
       </SafeAreaView>
     </>
